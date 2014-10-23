@@ -58,5 +58,9 @@ class TestMessage(TestCase):
         response = self.client.post('/receive_email')
         self.assertEqual(response.get_data(), b"OH NO")
 
+    def test_home_returns_message(self):
+        response = self.client.get('/')
+        self.assertEqual(response.get_data(), b"Nothing to see here. Move along.")
+
 if __name__ == '__main__':
     unittest.main()

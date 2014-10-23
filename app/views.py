@@ -9,6 +9,11 @@ app.config.from_object(os.environ['APP_SETTINGS'])
 mail = Mail(app)
 
 
+@app.route('/')
+def home():
+    return "Nothing to see here. Move along."
+
+
 @app.route('/receive_email', methods=['POST'])
 def email_submissions():
     email = request.values.get('email', None)
