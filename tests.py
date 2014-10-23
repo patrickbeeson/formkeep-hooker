@@ -47,10 +47,10 @@ class TestMessage(TestCase):
     def test_email_submissions_returns_correctly(self):
         self.assertEqual(email_submissions(), b"OH NO")
 
-    def test_email_submissions_with_email_address(self):
+    def test_email_submissions_with_required_data(self):
         response = self.client.post(
             '/receive_email',
-            data={'email': 'test@test.com'}
+            data={'email': 'test@test.com', 'message_type': 'promo'}
         )
         self.assertEqual(response.status_code, 200)
 
