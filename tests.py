@@ -50,7 +50,7 @@ class TestMessage(TestCase):
     def test_email_submissions_with_required_data(self):
         response = self.client.post(
             '/receive_email',
-            data={'email': 'test@test.com', 'message_type': 'promo'}
+            data={'email': 'test@test.com'}
         )
         self.assertEqual(response.status_code, 200)
 
@@ -60,7 +60,10 @@ class TestMessage(TestCase):
 
     def test_home_returns_message(self):
         response = self.client.get('/')
-        self.assertEqual(response.get_data(), b"Nothing to see here. Move along.")
+        self.assertEqual(
+            response.get_data(),
+            b"Nothing to see here. Move along."
+        )
 
 if __name__ == '__main__':
     unittest.main()
